@@ -18,34 +18,35 @@
                 </div>
 
                 <div class="card-body">
-                    
-                @csrf
-                    <div class="form-group">
-                        <label for="question-title">Question title</label>
-                        <input type="text" name="title" value="{{ old('title', $question->title) }}" id="question-title"
-                            class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}">
-                    
-                        @if($errors->has('title'))
-                        <div class="invalid-feedback">
-                            <strong>{{ $errors->first('title') }}</strong>
+                    <form action="{{ route('questions.store')}}" method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <label for="question-title">Question title</label>
+                            <input type="text" name="title" value="{{ old('title', $question->title) }}" id="question-title"
+                                class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}">
+                        
+                            @if($errors->has('title'))
+                            <div class="invalid-feedback">
+                                <strong>{{ $errors->first('title') }}</strong>
+                            </div>
+                            @endif
                         </div>
-                        @endif
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="question-body">Explain you question</label>
-                        <textarea name="body" id="question-body" row="10"
-                            class="form-control {{ $errors->has('body') ? 'is-invalid' : '' }}">{{ old('body', $question->body) }}</textarea>
-                    
-                        @if($errors->has('body'))
-                        <div class="invalid-feedback">
-                            <strong>{{ $errors->first('body') }}</strong>
+                        
+                        <div class="form-group">
+                            <label for="question-body">Explain you question</label>
+                            <textarea name="body" id="question-body" row="10"
+                                class="form-control {{ $errors->has('body') ? 'is-invalid' : '' }}">{{ old('body', $question->body) }}</textarea>
+                        
+                            @if($errors->has('body'))
+                            <div class="invalid-feedback">
+                                <strong>{{ $errors->first('body') }}</strong>
+                            </div>
+                            @endif
                         </div>
-                        @endif
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-outline-primary btn-lg">Ask this question</button>
-                    </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-outline-primary btn-lg">Ask this question</button>
+                        </div>
+                    </form>
 
                 </div>
             </div>
