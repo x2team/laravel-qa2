@@ -19,7 +19,7 @@ class Question extends Model
 
     public function getUrlAttribute()
     {
-        return route("questions.show", $this->slug);
+        return route("questions.show", ['slug' => $this->slug, 'id' => $this->id]);
     }
 
     public function getCreatedDateAttribute()
@@ -45,6 +45,6 @@ class Question extends Model
 
     public function answers()
     {
-        return $this->hasMany("App\Answer");
+        return $this->hasMany('App\Answer')->orderBy('votes_count', 'DESC'); //C1: Sort ben RouteServiceProvider, day la C2
     }
 }
