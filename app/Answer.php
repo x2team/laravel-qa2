@@ -32,12 +32,18 @@ class Answer extends Model
         });
 
         static::deleted(function($answer){
-            $question = $answer->question;
+            // C1
+            // $question = $answer->question;
+            // $answer->question->decrement('answers_count');
+            // if($question->best_answer_id == $answer->id){
+            //     $question->best_answer_id = NULL;
+            //     $question->save();
+            // }
+
+            //C2: Tao lien ket foreign best_answer_id tren questions table
+            // khi xoa trung cau tra loi co best_answer_id se tu dong set NULL ben bang questions
             $answer->question->decrement('answers_count');
-            if($question->best_answer_id == $answer->id){
-                $question->best_answer_id = NULL;
-                $question->save();
-            }
+
         });
 
         // static::saved(function($answer){

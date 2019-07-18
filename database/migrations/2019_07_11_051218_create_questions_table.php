@@ -25,7 +25,7 @@ class CreateQuestionsTable extends Migration
             $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); //cascade: xoa ben bang 1 se xoa tat ca du lieu ben bang nhieu
         });
     }
 
