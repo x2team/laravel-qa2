@@ -8,6 +8,7 @@
                 <hr>
                 <form action="{{ route('questions.answers.store', $question->id) }}" method="POST">
                     @csrf
+                    
                     <div class="form-group">
                         <textarea name="body" id="" cols="30" rows="10" class="form-control {{ $errors->has('body') ? 'is-invalid' : '' }}"></textarea>
                         @if($errors->has('body'))
