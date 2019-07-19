@@ -47,4 +47,10 @@ class Question extends Model
     {
         return $this->hasMany('App\Answer')->orderBy('votes_count', 'DESC'); //C1: Sort ben RouteServiceProvider, day la C2
     }
+
+    public function acceptBestAnswer(Answer $answer)
+    {
+        $this->best_answer_id = $answer->id;
+        $this->save();
+    }
 }
