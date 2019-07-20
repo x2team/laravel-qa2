@@ -61,7 +61,11 @@
                                 
                             </div>
                         </div>
-                    @endforeach
+                    @empty
+                        <div class="alert alert-warning">
+                            <strong>Sorry!</strong> There are no question availabe.
+                        </div>
+                    @endforelse
 
                     <div class="mix-auto">
                         {{ $questions->links() }}
