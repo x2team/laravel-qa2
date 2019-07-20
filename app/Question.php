@@ -31,7 +31,7 @@ class Question extends Model
     {
         if($this->answers_count>0){
             if($this->best_answer_id){
-                return "ansewerd-accepted";
+                return "answered-accepted";
             }
             return "answered";
         }
@@ -73,7 +73,7 @@ class Question extends Model
     {
         return $this->favorites->count();
     }
-
+    //Model ket noi
     public function votes()
     {
         return $this->morphToMany("App\User", 'votable');

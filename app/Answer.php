@@ -75,5 +75,14 @@ class Answer extends Model
     public function votes()
     {
         return $this->morphToMany("App\User", 'votable');
-    } 
+    }
+
+    public function upVotes()
+    {
+        return $this->votes()->wherePivot('vote', 1); 
+    }
+    public function downVotes()
+    {
+        return $this->votes()->wherePivot('vote', -1); 
+    }
 }

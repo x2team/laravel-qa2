@@ -12,31 +12,47 @@
                 <div class="media">
 
                     <div class="d-flex flex-column vote-controls">
-                        <a href="" title="This answer  is useful" class="vote-up">
+
+                        <a href="" title="This answer is useful" class="vote-up {{ Auth::guest() ? 'off' : '' }}"
+                            onclick="event.preventDefault(); document.getElementById('up-vote-answer-{{ $answer->id }}').submit(); ">
                             <i class="fas fa-caret-up fa-3x"></i>
                         </a>
-                        <span class="votes-count">1234</span>
-                        <a href="" title="This answer  is not useful" class="vote-down off">
+                        <form id="up-vote-answer-{{ $answer->id }}" action="/answers/{{ $answer->id }}/vote"
+                            method="POST" style="display:none;">
+                            @csrf
+                            <input type="hidden" value="1" name="vote">
+                        </form>
+
+                        <span class="votes-count">{{ $answer->votes_count }}</span>
+
+                        <a href="" title="This answer is not useful"
+                            class="vote-down {{ Auth::guest() ? 'off' : '' }}"
+                            onclick="event.preventDefault(); document.getElementById('down-vote-answer-{{ $answer->id }}').submit(); ">
                             <i class="fas fa-caret-down fa-3x"></i>
                         </a>
+                        <form id="down-vote-answer-{{ $answer->id }}" action="/answers/{{ $answer->id }}/vote"
+                            method="POST" style="display:none;">
+                            @csrf
+                            <input type="hidden" value="-1" name="vote">
+                        </form>
 
+                        {{-- Nut check cau tra loi chinh xac nhat  --}}
                         @can('accept', $answer)
-                            <a href="" title="Mark this answer as best answer" 
-                                class="{{ $answer->status}} mt-2"
-                                onclick="event.preventDefault(); document.getElementById('accept-answer-{{ $answer->id }}').submit()"
-                                >
-                                <i class="fas fa-check  fa-3x"></i>
-                            </a>
-                            <form action="{{ route('answers.accept', $answer->id) }}" id="accept-answer-{{ $answer->id }}" method="POST" style="display:none;">
-                                @csrf
-                            </form>
+                        <a href="" title="Mark this answer as best answer" class="{{ $answer->status}} mt-2"
+                            onclick="event.preventDefault(); document.getElementById('accept-answer-{{ $answer->id }}').submit()">
+                            <i class="fas fa-check  fa-3x"></i>
+                        </a>
+                        <form action="{{ route('answers.accept', $answer->id) }}" id="accept-answer-{{ $answer->id }}"
+                            method="POST" style="display:none;">
+                            @csrf
+                        </form>
                         @else
-                            @if($answer->is_best)
-                                <a href="" title="The question owner accepted this answer as best answer" 
-                                    class="{{ $answer->status}} mt-2">
-                                    <i class="fas fa-check  fa-3x"></i>
-                                </a>
-                            @endif
+                        @if($answer->is_best)
+                        <a href="" title="The question owner accepted this answer as best answer"
+                            class="{{ $answer->status}} mt-2">
+                            <i class="fas fa-check  fa-3x"></i>
+                        </a>
+                        @endif
                         @endcan
                     </div>
 
@@ -45,17 +61,17 @@
                         <div class="row">
                             <div class="col-4">
                                 @if(Auth::user() && Auth::user()->can('update', $answer))
-                                    <a href="{{ route('questions.answers.edit', [$question->id, $answer->id]) }}"
-                                        class="btn btn-sm btn-outline-info">Edit</a>
+                                <a href="{{ route('questions.answers.edit', [$question->id, $answer->id]) }}"
+                                    class="btn btn-sm btn-outline-info">Edit</a>
                                 @endif
                                 @if(Auth::user() && Auth::user()->can('delete', $answer))
-                                    <form class="form-delete" method="POST"
-                                        action="{{ route('questions.answers.destroy', [$question->id, $answer->id]) }}">
-                                        @method('DELETE')
-                                        @csrf
-                                        <button class="btn btn-sm btn-outline-danger" type="submit"
-                                            onclick="return confirm('Are u sure?')">Delete</button>
-                                    </form>
+                                <form class="form-delete" method="POST"
+                                    action="{{ route('questions.answers.destroy', [$question->id, $answer->id]) }}">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button class="btn btn-sm btn-outline-danger" type="submit"
+                                        onclick="return confirm('Are u sure?')">Delete</button>
+                                </form>
                                 @endif
                             </div>
                             <div class="col-4"></div>
@@ -70,9 +86,9 @@
                                         <a href="{{ $answer->user->url }}">{{ $answer->user->name }}</a>
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
                         </div>
-                        
+
                     </div>
                 </div>
                 <hr>
