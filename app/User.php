@@ -92,7 +92,7 @@ class User extends Authenticatable
     {
         $voteAnswers = $this->voteAnswers();
 
-        $this->_vote($voteAnswers, $question, $vote);
+        $this->_vote($voteAnswers, $answer, $vote);
         
     }
 
