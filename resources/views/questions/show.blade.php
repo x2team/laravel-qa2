@@ -29,10 +29,11 @@
                                 <div class="col-4"></div>
                                 <div class="col-4"></div>
                                 <div class="col-4">
-                                    @include('shared._author', [
+                                    {{-- @include('shared._author', [
                                         'label' => 'Answered',
                                         'model' => $question 
-                                    ])
+                                    ]) --}}
+                                    <user-info v-bind:model="{{ $question }}" label="Asked"></user-info>
                                 </div>
                             </div>
                         </div>

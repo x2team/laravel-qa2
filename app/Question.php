@@ -10,6 +10,8 @@ class Question extends Model
     
     protected $fillable = ['title', 'body'];
 
+    protected $appends = ['created_date']; //lay gia tri tu getCreatedDateAttribute, su dung qua Vue
+
     public function user(){
         return $this->belongsTo("App\User");
     }
