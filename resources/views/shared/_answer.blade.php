@@ -23,13 +23,13 @@
                                 <a v-on:click.prevent="edit" class="btn btn-sm btn-outline-info">Edit</a>
                             @endif
                             @if(Auth::user() && Auth::user()->can('delete', $answer))
-                                <form class="form-delete" method="POST"
+                                <button @click="destroy" class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
+                                {{-- <form class="form-delete" method="POST"
                                     action="{{ route('questions.answers.destroy', [$question->id, $answer->id]) }}">
                                     @method('DELETE')
                                     @csrf
-                                    <button class="btn btn-sm btn-outline-danger" type="submit"
-                                        onclick="return confirm('Are u sure?')">Delete</button>
-                                </form>
+                                    
+                                </form> --}}
                             @endif
                         </div>
                     </div>
