@@ -9,7 +9,7 @@ class Answer extends Model
     use VotableTrait;
     
     protected $fillable = ['body', 'user_id'];
-    protected $appends = ['created_date']; //lay gia tri tu getCreatedDateAttribute, su dung qua Vue
+    protected $appends = ['created_date', 'body_html']; //lay gia tri tu getCreatedDateAttribute, de su dung qua Vue
 
     public function question()
     {

@@ -36,7 +36,7 @@
          </p>
 
         <div class="excerpt">
-            {{ $question->excerpt(200) }}
+            {{ $question->excerpt }}
         </div>
         
     </div>

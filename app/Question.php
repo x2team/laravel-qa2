@@ -93,14 +93,14 @@ class Question extends Model
     //     return $this->votes()->wherePivot('vote', -1); 
     // }
 
-    //Ham nay du thua van chua biet ly do
+    //Su dung ham nay: $post->excerpt;
     public function getExcerptAttribute($length)
     {
-        return  $this->excerpt(250); 
+        return  $this->excerpt(250);
     }
     //*********************************** */
 
-
+    //Goi ham nay: $post->excerpt(350);
     public function excerpt($length)
     {
         return  \Str::limit(strip_tags($this->bodyHtml()), $length, '...');
