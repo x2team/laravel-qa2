@@ -26,6 +26,7 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.9.0",
-        "@fortawesome/free-solid-svg-icons": "^5.9.0"
+        "@fortawesome/free-solid-svg-icons": "^5.9.0",
+        "vue-izitoast": "^1.1.2"
     }
 }
