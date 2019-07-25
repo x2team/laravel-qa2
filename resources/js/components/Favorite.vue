@@ -29,9 +29,9 @@ export default {
         endpoint() {
             return `/questions/${this.id}/favorites`;
         },
-        signedIn() {
-            return window.Auth.signedIn;
-        }
+        // signedIn() {
+        //     return window.Auth.signedIn; // bo dc, vi da su dung global: Vue.prototype.signedIn = window.Auth.signedIn
+        // }
     },
     methods: {
         toggle (){
