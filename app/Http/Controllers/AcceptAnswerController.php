@@ -13,6 +13,12 @@ class AcceptAnswerController extends Controller
         
         $answer->question->acceptBestAnswer($answer);
 
+        if(request()->expectsJson()){
+            return response()->json([
+                'message' => "You are accepted this answer as best answer"
+            ]);
+        }
+
         return back();
     }
 }
