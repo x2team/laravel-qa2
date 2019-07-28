@@ -51,7 +51,7 @@ export default {
             .then( ({data}) => {
                 this.answers.push(...data.data);
                 this.nextUrl = data.next_page_url;
-                console.log(data.next_page_url);
+                // console.log(data.next_page_url);
             })
         }
     },
