@@ -38,7 +38,8 @@ class RouteServiceProvider extends ServiceProvider
 
 
             //Khong sort cau tra loi
-            $question = Question::with(['user', 'answers.user'])->where('slug', $slug)->where('id', $id->parameters['id'])->first();
+            // $question = Question::with(['user', 'answers.user'])->where('slug', $slug)->where('id', $id->parameters['id'])->first();
+            $question = Question::with('user')->where('slug', $slug)->where('id', $id->parameters['id'])->first();
 
             // return $question ? $question : abort(404);
             return $question ?? abort(404);
