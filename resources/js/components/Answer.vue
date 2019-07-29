@@ -16,9 +16,8 @@
                 <div class="row">
                     <div class="col-4">
                         <div class="ml-auto">
-                          <a v-if="authorize('modify', answer)" @:click.prevent="edit" class="btn btn-sm btn-outline-info">Edit</a>
+                          <a v-if="authorize('modify', answer)" @click.prevent="edit" class="btn btn-sm btn-outline-info">Edit</a>
                           <button v-if="authorize('modify', answer)" @click="destroy" class="btn btn-sm btn-outline-danger" type="submit">Delete</button>
-                             
                         </div>
                     </div>
                     <div class="col-4"></div>
@@ -35,9 +34,14 @@
 
 
 <script>
+import Vote from './Vote.vue';
+import UserInfo from './UserInfo.vue';
+
 export default {
   props: ["answer"],
 
+  components: { Vote, UserInfo  },
+  
   data() {
     return {
       editing: false,

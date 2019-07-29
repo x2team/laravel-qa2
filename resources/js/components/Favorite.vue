@@ -47,6 +47,11 @@ export default {
         destroy() {
             axios.delete(this.endpoint)
             .then(res => {
+                this.$toast.warning("Thank you for feedback", "Success", {
+                    timeOut: 3000,
+                    position: 'bottomLeft'
+                });
+
                 this.count--;
                 this.isFavorited = false;
             });
@@ -55,6 +60,10 @@ export default {
         create() {
             axios.post(this.endpoint)
             .then(res => {
+                this.$toast.success(res.data.message, "Success", {
+                    timeOut: 3000,
+                    position: 'bottomLeft'
+                });
                 this.count++;
                 this.isFavorited = true;
             })

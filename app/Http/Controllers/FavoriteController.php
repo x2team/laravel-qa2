@@ -17,7 +17,9 @@ class FavoriteController extends Controller
     	$question->favorites()->attach(auth()->id());
 
         if(request()->expectsJson()){
-            return response()->json(null, 204); 
+            return response()->json([
+                'message' => 'Thank you for feed back',
+            ]);
         }
 
     	return back();
