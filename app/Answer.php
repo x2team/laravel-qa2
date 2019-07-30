@@ -72,7 +72,7 @@ class Answer extends Model
 
     public function isBest()
     {
-        return $this->id == $this->question->best_answer_id;
+        return $this->id === $this->question->best_answer_id; //tra ve true neu la cau tra loi best
     }
 
     

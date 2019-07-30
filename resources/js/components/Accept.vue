@@ -29,7 +29,7 @@ export default {
     },
     created(){
         EventBus.$on('accepted', id => {
-            this.isBest = (id === this.id); //chua hieu
+            this.isBest = (id === this.id); // this.isBest = true | false, id: khi bam vao nut accept  | this.id: id cua moi component Answer
         });
     },
     methods: {
@@ -49,10 +49,10 @@ export default {
     },
     computed: {
         canAccept(){
-            return this.authorize('accept', this.answer);
+            return this.authorize('accept', this.answer); // Neu user nay da post cau tra loi nay
         },
         accepted() {
-            return !this.canAccept && this.isBest;
+            return !this.canAccept && this.isBest; // Neu user khong post cau tra loi nay & no da la cau tra loi Best
         },
         classes() {
             return [
