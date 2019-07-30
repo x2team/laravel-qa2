@@ -23,6 +23,8 @@
 <script>
 
 import MarkdownIt from 'markdown-it';
+import autosize from 'autosize';
+
 const md = new MarkdownIt();
 
 export default {
@@ -30,9 +32,25 @@ export default {
 
     computed: {
         preview() {
+            //MarkdownIt
             return md.render(this.body);
         }
     },
+
+    // watch: {
+    //     body: function (){
+    //         console.log('watch body');
+    //     }
+    // },
+    
+    //Autosize
+    mounted() {
+        autosize(this.$el.querySelectorAll('textarea'));
+    },
+    updated() {
+        autosize(this.$el.querySelectorAll('textarea'));
+    },
+
 
     data() {
         return {
