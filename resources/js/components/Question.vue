@@ -12,7 +12,9 @@
                     <div class="media"> 
                         <div class="media-body">
                             <div class="form-group">
-                                <textarea v-model="body" rows="10" class="form-control" required></textarea>
+                                <m-editor :body="body">
+                                    <textarea v-model="body" rows="10" class="form-control" required></textarea>
+                                </m-editor>
                             </div>
                             <button class="btn btn-primary" :disabled="isInvalid">Update</button>
                             <button class="btn btn-secondary" v-on:click.prevent="cancel">Cancel </button>
@@ -62,12 +64,14 @@
 import { setTimeout } from 'timers';
 import Vote from './Vote.vue';
 import UserInfo from './UserInfo.vue';
+import MEditor from './MEditor';
+import modification from '../mixins/modification';
 
 export default {
     props: ['question'],
 
     components: {
-        Vote, UserInfo
+        Vote, UserInfo, MEditor
     },
     data(){
         return {
