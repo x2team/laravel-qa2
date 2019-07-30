@@ -22,7 +22,7 @@ Route::middleware('verified')->group(function() {
 
     Route::resource('questions', 'QuestionController')->except(['show', 'index']);
     // Route::post('questions/{question}/answers', 'AnswerController@store')->name('answers.store');
-    Route::resource('questions.answers', 'AnswerController')->except(['create', 'show']);
+    Route::resource('questions.answers', 'AnswerController')->except(['create', 'show', 'index']);
     Route::post('/answers/{answer}/accept', 'AcceptAnswerController')->name('answers.accept');
 
     Route::post('questions/{question}/favorites', 'FavoriteController@store')->name('questions.favorite');
@@ -35,6 +35,7 @@ Route::middleware('verified')->group(function() {
 
 Route::get('/questions/{slug}_{id}', 'QuestionController@show')->name('questions.show');
 Route::get('/questions', 'QuestionController@index')->name('questions.index');
+Route::get('/questions/{question}/answers', 'AnswerController@index')->name('questions.answers.index');
 
 
 
