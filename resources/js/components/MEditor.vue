@@ -47,9 +47,9 @@ export default {
     // },
     
     //Autosize
-    mounted() {
-        autosize(this.$el.querySelectorAll('textarea'));
-    },
+    // mounted() {
+    //     autosize(this.$el.querySelectorAll('textarea'));
+    // },
     updated() {
         autosize(this.$el.querySelectorAll('textarea'));
     },
