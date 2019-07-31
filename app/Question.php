@@ -44,7 +44,7 @@ class Question extends Model
 
     public function getBodyHtmlAttribute()
     {
-        return clean($this->bodyHtml());
+        return ($this->bodyHtml());
     }
 
     public function answers()
