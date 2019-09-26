@@ -15,7 +15,7 @@ class UserQuestionAnswerTableSeeder extends Seeder
         \DB::table('answers')->delete();
         \DB::table('questions')->delete();
         \DB::table('users')->delete();
-
+        // factory(App\User::class, 3)->create();
         
         factory(App\User::class, 3)->create()->each(function($u){
             $u->questions()

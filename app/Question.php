@@ -94,7 +94,7 @@ class Question extends Model
     // }
 
     //Su dung ham nay: $post->excerpt;
-    public function getExcerptAttribute($length)
+    public function getExcerptAttribute()
     {
         return  $this->excerpt(250);
     }
